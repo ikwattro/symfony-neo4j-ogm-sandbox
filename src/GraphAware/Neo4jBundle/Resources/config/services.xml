@@ -1,0 +1,28 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <!--
+    <services>
+        <service id="graph_aware_neo4j.example" class="GraphAware\Neo4jBundle\Example">
+            <argument type="service" id="service_id" />
+            <argument>plain_value</argument>
+            <argument>%parameter_name%</argument>
+        </service>
+    </services>
+    -->
+
+    <services>
+        <service id="graph_aware_neo4j.ogm.entity_manager" class="GraphAware\Neo4j\OGM\EntityManager">
+            <factory class="GraphAware\Neo4j\OGM\EntityManager" method="create"/>
+            <argument type="string">http://localhost:7474</argument>
+        </service>
+
+        <service id="form.type.graph_entity" class="AppBundle\Form\GraphEntityType">
+            <tag name="form.type" alias="graph_entity"/>
+            <argument type="service" id="graph_aware_neo4j.ogm.entity_manager"/>
+        </service>
+    </services>
+</container>

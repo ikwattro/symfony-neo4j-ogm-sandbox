@@ -1,0 +1,7 @@
+graph_aware_neo4j:
+    resource: "@GraphAwareNeo4jBundle/Resources/config/routing.xml"
+    prefix:   /
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
